@@ -1,0 +1,42 @@
+---
+  - hosts: webservers
+
+  - include: common/user-space.yml
+  - include: git/git.yml
+  - include: python/mysqldb.yml
+
+  - include: mysql/mysql.yml
+    vars:
+      mysql_root_password:
+      mysqld:
+        bind_address: 127.0.0.1
+        key_buffer: 16M
+        max_connection: 100
+        # skip archive storage engine
+        skip-archive: ~
+
+  - include: php5/fpm.yml
+    vars:
+      delete_default_pool: true
+  - include: php5/fpm-pool.yml
+    vars:
+      name: default.conf
+      listen: /var/run/php5-fpm.sock
+      pm_process_idle_timeout: 20s
+      pm_max_requests: 100
+      php_flag:
+        display_errors: off
+      php_admin_flag:
+        log_errors: on
+      php_admin_value:
+        memory_limit: 64M
+
+  - include: nginx/nginx.yml
+    vars:
+      delete_default_vhost: true
+  - include: nginx/deny-ip-access.yml
+
+  - include: php5/nginx-upstream.yml
+    vars:
+        upstream_name: php-fpm-upstream.conf
+        server: unix:/var/run/php5-fpm.sock

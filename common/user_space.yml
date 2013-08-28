@@ -1,0 +1,16 @@
+---
+
+##
+# Ansible playbook that install and configure user utilities
+##
+
+- hosts: all
+  gather_facts: no
+
+  tasks:
+  - name: Ensure packages mc, vim, htop are installed
+    action: apt pkg=$item state=latest force=yes
+    with_items:
+      - mc
+      - htop
+      - vim

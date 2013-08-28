@@ -1,0 +1,14 @@
+---
+
+##
+# This playbook installs redis-server on an Ubuntu 12.04 system
+##
+
+- hosts: cache
+  gather_facts: no
+
+  tasks:
+  - name: Ensure redis package are removed
+    apt: pkg=$item state=absent force=yes
+    with_items:
+      - redis-server

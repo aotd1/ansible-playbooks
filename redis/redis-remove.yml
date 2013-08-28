@@ -1,0 +1,6 @@
+---
+  - hosts: cache
+    gather_facts: no
+
+  tasks:
+    - include: tasks/remove-redis.yml

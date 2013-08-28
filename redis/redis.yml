@@ -1,0 +1,26 @@
+---
+
+##
+# This playbook installs redis-server on Ubuntu system
+##
+
+- hosts: cache
+  gather_facts: no
+
+  vars:
+    redis_dest_config: /etc/redis/redis.conf
+    redis_port: 6379 # If port 0 is specified Redis will not listen on a TCP socket.
+    redis_interface: 0.0.0.0
+    redis_unix_socket: /var/run/redis/redis.sock
+    redis_unix_socket_permissions: 777
+    redis_log_level: notice
+    redis_databases: 16
+    redis_ram_only: true
+    redis_timeout: 100
+    redis_maxmemory: {limit: '3gb', policy: 'volatile-lru'}
+
+  tasks:
+  - include: tasks/setup-redis.yml
+
+  handlers:
+  - include: handlers/redis.yml

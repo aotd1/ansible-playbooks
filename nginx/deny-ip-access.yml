@@ -1,0 +1,8 @@
+---
+  - hosts: webservers
+
+    tasks:
+      - include: tasks/setup-deny-ip-access.yml
+
+    handlers:
+      - include: handlers/nginx.yml

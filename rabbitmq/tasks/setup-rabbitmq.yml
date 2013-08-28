@@ -1,0 +1,17 @@
+---
+  - name: Ensure python-software-properties is installed
+    apt: pkg=python-software-properties state=installed
+
+  - name: Add rabbitmq official apt repository
+    apt_repository: repo='deb http://www.rabbitmq.com/debian/ testing main' state=present
+
+  - name: Add public key for rabbitMQ repo
+    apt_key: url=http://www.rabbitmq.com/rabbitmq-signing-key-public.asc state=present
+
+  - name: Install rabbitmq
+    apt: update_cache=yes pkg=rabbitmq-server state=latest force=yes
+
+  - name: Enable rabbitmq plugins
+    rabbitmq_plugin: names=$rabbitmq_plugins state=enabled
+    notify:
+    - restart rabbitmq

@@ -1,0 +1,11 @@
+---
+  - hosts: webservers
+    gather_facts: no
+
+    vars:
+      yii_version: 1.1.14
+      yii_path: /var/www/yii
+      yii_repo: git://github.com/yiisoft/yii.git
+
+    tasks:
+      - include: tasks/setup-yii.yml

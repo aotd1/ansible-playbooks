@@ -1,0 +1,6 @@
+---
+- hosts: webservers
+  gather_facts: no
+
+  tasks:
+    include: tasks/remove-git.yml

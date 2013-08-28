@@ -1,0 +1,5 @@
+---
+  - name: Ensure git are installed
+    action: apt pkg=git state=latest force=yes
+  - name: Add fancy git config
+    action: copy src='files/gitconfig' dest='/etc/gitconfig' owner=root group=root mode=644 force=no

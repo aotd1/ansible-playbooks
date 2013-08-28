@@ -1,0 +1,10 @@
+---
+
+# Redis handlers file
+
+- name: restart redis-server
+  service: name=redis-server state=stopped pattern=redis-server
+  service: name=redis-server state=started pattern=redis-server
+
+- name: reload redis-server
+  service: name=redis-server state=reloaded

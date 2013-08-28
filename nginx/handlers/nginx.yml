@@ -1,0 +1,12 @@
+---
+
+# Nginx handlers file
+
+- name: restart nginx
+  sudo: yes
+  service: name=nginx state=restarted enabled=yes pattern=/etc/init.d/nginx
+
+
+- name: reload nginx
+  sudo: yes
+  service: name=nginx state=reloaded pattern=nginx

@@ -1,0 +1,4 @@
+---
+
+  - name: push php-fpm upstream to nginx config.d
+    template: src=templates/upstream-php.j2 dest=/etc/nginx/conf.d/$upstream_file

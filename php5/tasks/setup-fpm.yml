@@ -1,0 +1,15 @@
+---
+  - name: install php5-fpm
+    apt: name=php5-fpm
+
+  - name: ensure PHP packages are installed
+    apt: pkg=$item force=yes
+    with_items: $modules
+    notify:
+      - restart php5-fpm
+
+  - name: delete default pool
+    action: file path=/etc/php5/fpm/pool.d/www.conf state=absent
+    only_if: "$delete_default_pool"
+    notify:
+      - restart php5-fpm

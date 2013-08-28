@@ -1,0 +1,5 @@
+---
+  - name: Ensure git are removed
+    action: apt pkg=git state=absent force=yes
+  - name: Remove fancy git config
+    action: file path='/etc/gitconfig' state=absent
