@@ -8,7 +8,7 @@
         key_buffer: 16M
 
     tasks:
-      - include: tasks/setup.yml
+    - include: tasks/setup.yml
 
     handlers:
-      - include: handlers/handlers.yml
+    - include: handlers/handlers.yml

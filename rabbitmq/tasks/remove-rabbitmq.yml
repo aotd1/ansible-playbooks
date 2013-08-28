@@ -1,7 +1,4 @@
 ---
-  - name: Ensure python-software-properties is installed
-    apt: pkg=python-software-properties state=installed
-
   - name: Remove rabbitmq
     apt: pkg=rabbitmq-server state=absent force=yes
 

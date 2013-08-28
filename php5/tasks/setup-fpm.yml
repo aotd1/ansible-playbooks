@@ -1,6 +1,10 @@
 ---
+  - name: ensure php-fpm repository present (Ubuntu 10.04)
+    apt_repository: repo=ppa:brianmercer/php
+    when: ansible_lsb.codename == "lucid"
+
   - name: install php5-fpm
-    apt: name=php5-fpm
+    apt: name=php5-fpm force=yes
 
   - name: ensure PHP packages are installed
     apt: pkg=$item force=yes

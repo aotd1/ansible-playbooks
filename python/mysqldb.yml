@@ -1,5 +1,5 @@
 ---
-  - hosts: webservers
+  - hosts: databases
 
     tasks:
       - include: tasks/setup-mysqldb.yml

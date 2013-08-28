@@ -9,7 +9,7 @@ These playbook install postgresql. Use it only for development, not on productio
 
 * **postgresql_version**: Postgresql version
     * Type: String
-    * Default: 9.2
+    * Default: 9.1
 
 * **postgresql_conf_path: Postgresql configuration file
     * Type: String

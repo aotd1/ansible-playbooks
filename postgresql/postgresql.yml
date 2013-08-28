@@ -8,7 +8,7 @@
   sudo: yes
   gather_facts: yes
   vars:
-    postgresql_version: 9.2
+    postgresql_version: 9.1
     postgresql_conf_path: /etc/postgresql/$postgresql_version/main
     postgresql_unix_socket_directory: /var/run/postgresql
     postgresql_listen_port: 5432

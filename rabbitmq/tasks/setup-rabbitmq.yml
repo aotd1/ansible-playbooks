@@ -1,7 +1,4 @@
 ---
-  - name: Ensure python-software-properties is installed
-    apt: pkg=python-software-properties state=installed
-
   - name: Add rabbitmq official apt repository
     apt_repository: repo='deb http://www.rabbitmq.com/debian/ testing main' state=present
 

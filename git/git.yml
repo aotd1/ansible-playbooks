@@ -1,6 +1,4 @@
 ---
-- hosts: webservers
-  gather_facts: no
-
-  tasks:
-    include: tasks/setup-git.yml
+  - hosts: webservers
+    tasks:
+    - include: tasks/setup-git.yml

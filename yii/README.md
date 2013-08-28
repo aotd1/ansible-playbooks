@@ -10,7 +10,7 @@ http://www.yiiframework.com/
 
 * **yii_version**: The Yii tag or branch (master or 1.1.14)
     * Type: String
-    * Default: 1.1.14
+    * Default: master
 
 * **yii_path**: Yii framework path
     * Type: String

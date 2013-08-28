@@ -1,0 +1,7 @@
+---
+- name: ensure python-software-properties is installed
+  apt: pkg=python-software-properties state=installed
+
+- name: ensure software-properties-common is installed (Ubuntu 13.04)
+  apt: pkg=software-properties-common state=installed
+  when: ansible_lsb.codename == "raring"

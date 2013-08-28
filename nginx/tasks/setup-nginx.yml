@@ -1,9 +1,7 @@
 ---
-  - name: ensure python-software-properties is installed
-    apt: pkg=python-software-properties state=installed
-
   - name: ensure nginx official repository present
     apt_repository: repo=ppa:nginx/stable
+    when: ansible_os_family != "Debian"
 
   - name: install nginx
     apt: update_cache=yes name=nginx state=installed force=yes
