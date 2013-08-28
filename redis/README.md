@@ -19,31 +19,31 @@ This playbook install and configure redis server
     * Type: Integer
     * Default: 6379
 
-* **redis_interface: Listen interface
+* **redis_interface**: Listen interface
     * Type: String
     * Default: 0.0.0.0
 
-* **redis_unix_socket: Unix socket
+* **redis_unix_socket**: Unix socket
     * Type: String
     * Default: /var/run/redis/redis.sock
 
-* **redis_unix_socket_permissions: Unix socket permissions
+* **redis_unix_socket_permissions**: Unix socket permissions
     * Type: Integer
     * Default: 777
 
-* **redis_log_level: Log level
+* **redis_log_level**: Log level
     * Type: String
     * Default: notice
 
-* **redis_databases: Databases count
+* **redis_databases**: Databases count
     * Type: Integer
     * Default: 16
 
-* **redis_ram_only: Store data in RAM memory only, don't flush on disk
+* **redis_ram_only**: Store data in RAM memory only, don't flush on disk
     * Type: Boolean
     * Default: true
 
-* **redis_timeout: Connection timeout
+* **redis_timeout**: Connection timeout
     * Type: Integer
     * Default: 100
 

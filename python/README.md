@@ -23,3 +23,13 @@ The mysqldb playbook install python-mysqldb to use `mysql_db` and `mysql_user` a
 ``` bash
 $ ansible-playbook mysqldb.yml -uroot
 ```
+
+## ppa
+
+Install python-software-properties
+
+### Usage
+
+``` bash
+$ ansible-playbook ppa.yml -uroot
+```
