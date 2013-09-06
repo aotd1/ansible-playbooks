@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: yes
+  vars:
+    timezone: Asia/Novosibirsk
+  tasks:
+  - include: tasks/timezone.yml
+  handlers:
+  - include: handlers/handlers.yml

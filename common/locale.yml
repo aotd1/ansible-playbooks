@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: yes
+  vars:
+    lang: ru_RU
+  tasks:
+  - include: tasks/locale.yml
+  handlers:
+  - include: handlers/handlers.yml

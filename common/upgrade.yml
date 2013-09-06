@@ -1,0 +1,7 @@
+---
+  - hosts: all
+    tasks:
+    - name: Check python-apt package
+      shell: apt-get install python-apt --yes
+    - name: Full upgrade
+      apt: update_cache=yes upgrade=dist

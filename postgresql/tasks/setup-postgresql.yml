@@ -1,0 +1,50 @@
+---
+  - name: Workaround to install postgresql with properly locale set
+    shell: LANG=$postgresql_cluster_encoding LC_COLLATE=$postgresql_cluster_encoding LC_CTYPE=$postgresql_cluster_encoding LC_MESSAGES=$postgresql_cluster_encoding LC_MONETARY=$postgresql_cluster_encoding LC_NUMERIC=$postgresql_cluster_encoding LC_TIME=$postgresql_cluster_encoding LC_ALL=$postgresql_cluster_encoding apt-get install -y --force-yes postgresql-$postgresql_version creates=$postgresql_conf_path/postgresql.conf
+
+  - name: Ensure PostgreSQL packages are installed
+    apt: pkg=$item force=yes
+    with_items:
+      - postgresql-common
+      - postgresql-contrib-$postgresql_version
+      - postgresql-client-$postgresql_version
+      - postgresql-client-common
+
+  - name: Ensure conf.d directory is present
+    file: >
+      path=$postgresql_conf_path/conf.d
+      state=directory
+      owner=postgres
+      group=postgres
+      mode=0644
+    register: postgres_confd_created
+
+  - name: Ensure pg_specific file is present
+    copy: >
+      src=files/pg_specific.conf
+      dest=$postgresql_conf_path/pg_specific.conf
+      force=yes
+      owner=postgres
+      group=postgres
+      mode=0644
+    when: postgres_confd_created.changed
+    notify: restart postgresql
+
+  - name: Update postgresql configuration file
+    template: >
+      src=templates/postgresql.conf
+      dest=$postgresql_conf_path/postgresql.conf
+      owner=postgres
+      group=postgres
+      mode=0644
+    notify: restart postgresql
+
+  - name: Update postgresql pg_hba file
+    template: >
+      src=templates/pg_hba.conf
+      dest=$postgresql_conf_path/pg_hba.conf
+      owner=postgres
+      group=postgres
+      mode=0644
+    notify: reload postgresql
+

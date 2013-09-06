@@ -1,0 +1,26 @@
+
+[color]
+        branch = auto
+        diff = auto
+        status = auto
+[color "branch"]
+        current = green reverse
+        local = green
+        remote = yellow
+[color "diff"]
+        meta = yellow bold
+        frag = magenta bold
+        old = red bold
+        new = green bold
+[color "status"]
+        added = green
+        changed = red
+        untracked = cyan
+[alias]
+        co = checkout
+        ci = commit
+        st = status
+        br = branch
+        hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+        type = cat-file -t
+        dump = cat-file -p

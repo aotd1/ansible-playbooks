@@ -1,0 +1,14 @@
+---
+  - name: Ensure redis package are installed
+    apt: pkg=$item force=yes
+    with_items:
+      - redis-server
+
+  - name: Deploy custom config file
+    template: >
+      src=templates/redis.conf
+      dest=$redis_dest_config
+      owner=root
+      group=root
+      mode=0644
+    notify: restart redis-server

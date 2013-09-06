@@ -1,0 +1,9 @@
+---
+- hosts: mq
+  gather_facts: no
+  vars:
+    rabbitmq_plugins: rabbitmq_management,rabbitmq_tracing
+  tasks:
+  - include: tasks/setup-rabbitmq.yml
+  handlers:
+  - include: handlers/rabbitmq.yml

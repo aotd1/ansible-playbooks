@@ -1,0 +1,6 @@
+---
+- hosts: mq
+  gather_facts: no
+
+  tasks:
+  - include: tasks/remove-rabbitmq.yml

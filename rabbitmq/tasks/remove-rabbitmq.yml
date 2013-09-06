@@ -1,0 +1,10 @@
+---
+  - name: Remove rabbitmq
+    apt: pkg=rabbitmq-server state=absent force=yes
+
+  - name: Remove public key for rabbitMQ repo
+    apt_key: url=http://www.rabbitmq.com/rabbitmq-signing-key-public.asc state=absent
+
+  - name: Remove rabbitmq official apt repository
+    apt_repository: repo='deb http://www.rabbitmq.com/debian/ testing main' state=absent
+

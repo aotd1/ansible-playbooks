@@ -1,0 +1,13 @@
+---
+  - hosts: webservers
+
+    vars:
+        upstream_file: php-fpm-upstream.conf
+        upstream_name: php-local
+        server: unix:/var/run/php5-fpm.sock
+
+    tasks:
+      - include: tasks/setup-nginx-upstream.yml
+
+    handlers:
+      - include: handlers/handlers.yml

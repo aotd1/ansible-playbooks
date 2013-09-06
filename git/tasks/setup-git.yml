@@ -1,0 +1,11 @@
+---
+  - name: Ensure git are installed (Ubuntu 10.04)
+    apt: pkg=git-core state=latest force=yes
+    when: ansible_lsb.codename == "lucid"
+
+  - name: Ensure git are installed (Ubuntu >10.04)
+    apt: pkg=git state=latest force=yes
+    when: ansible_lsb.codename != "lucid"
+
+  - name: Add fancy git config
+    copy: src='files/gitconfig' dest='/etc/gitconfig' owner=root group=root mode=644 force=no

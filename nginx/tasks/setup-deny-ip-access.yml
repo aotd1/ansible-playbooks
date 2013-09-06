@@ -1,0 +1,10 @@
+---
+  - name: ensure nginx reject connections to web-server IP or localhost
+    copy: src=templates/deny-ip-access.j2 dest=/etc/nginx/sites-available/deny-ip-access.conf
+    notify:
+      - restart nginx
+
+  - name: link in sites-enabled
+    action: file src=/etc/nginx/sites-available/deny-ip-access.conf dest=/etc/nginx/sites-enabled/deny-ip-access.conf state=link
+    notify:
+      - restart nginx

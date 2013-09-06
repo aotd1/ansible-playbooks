@@ -1,0 +1,12 @@
+---
+- name: create locale.gen
+  template: src=templates/locale.gen.j2 dest=/etc/locale.gen
+  when_boolean: $lang
+  notify:
+    - update locale-gen
+
+- name: configure locale (with UTF-8 charset)
+  template: src=templates/locale.j2 dest=/etc/default/locale
+  when_boolean: $lang
+  notify:
+    - update locale
