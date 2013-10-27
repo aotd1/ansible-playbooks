@@ -1,0 +1,19 @@
+---
+  - name: Remove virtualbox
+    apt: pkg=$item state=absent force=yes
+    with_items:
+    - virtualbox-$virtualbox_version
+    register: removed
+
+  - name: Remove public key for virtualbox repo
+    apt_key: url=http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc id=98AB5139 state=absent
+    when: removed.changed
+    register: last_result
+
+  - name: Remove virtualbox official apt repository
+    file: path=/etc/apt/sources.list.d/virtualbox.list state=absent
+    when: last_result.changed
+
+  - name: Update apt cache
+    apt: update_cache=yes
+    when: last_result.changed

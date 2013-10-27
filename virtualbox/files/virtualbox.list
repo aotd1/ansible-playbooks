@@ -1,0 +1,10 @@
+deb http://download.virtualbox.org/virtualbox/debian precise contrib
+deb http://download.virtualbox.org/virtualbox/debian oneiric contrib
+deb http://download.virtualbox.org/virtualbox/debian natty contrib
+deb http://download.virtualbox.org/virtualbox/debian maverick contrib non-free
+deb http://download.virtualbox.org/virtualbox/debian lucid contrib non-free
+deb http://download.virtualbox.org/virtualbox/debian karmic contrib non-free
+deb http://download.virtualbox.org/virtualbox/debian hardy contrib non-free
+deb http://download.virtualbox.org/virtualbox/debian wheezy contrib
+deb http://download.virtualbox.org/virtualbox/debian squeeze contrib non-free
+deb http://download.virtualbox.org/virtualbox/debian lenny contrib non-free

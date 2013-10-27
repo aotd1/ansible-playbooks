@@ -1,0 +1,18 @@
+---
+  - name: Add virtualbox official apt repository
+    copy: src=files/virtualbox.list dest=/etc/apt/sources.list.d/virtualbox.list
+    register: last_result
+
+  - name: Add public key for virtualbox repo
+    apt_key: url=http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc id=98AB5139 state=present
+    when: last_result.changed
+
+  - name: Update apt-cache
+    apt: update_cache=yes
+    when: last_result.changed
+
+  - name: Install virtualbox
+    apt: pkg=$item state=latest force=yes
+    with_items:
+    - dkms
+    - virtualbox-$virtualbox_version
