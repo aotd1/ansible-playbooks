@@ -1,0 +1,8 @@
+---
+- hosts: dev
+  gather_facts: no
+  sudo: yes
+  vars_files:
+  - vars/default.yml
+  tasks:
+  - include: tasks/setup-virtualbox.yml

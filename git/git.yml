@@ -1,4 +1,6 @@
 ---
-  - hosts: webservers
-    tasks:
-    - include: tasks/setup-git.yml
+- hosts: webservers
+  sudo: yes
+
+  tasks:
+  - include: tasks/setup-git.yml
