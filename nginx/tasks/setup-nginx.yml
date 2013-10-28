@@ -13,6 +13,6 @@
 
   - name: delete default vhost
     file: path=/etc/nginx/sites-enabled/default state=absent
-    only_if: "$delete_default_vhost"
+    when: $delete_default_vhost
     notify:
       - restart nginx
