@@ -4,7 +4,7 @@
 
     tasks:
     - name: Ensure packages mc, vim, htop are installed
-      action: apt pkg=$item state=latest force=yes
+      action: apt pkg={{ item }} state=latest force=yes
       with_items:
         - mc
         - htop

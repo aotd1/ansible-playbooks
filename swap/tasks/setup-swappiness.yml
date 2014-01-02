@@ -8,7 +8,7 @@
 
   - name: set swappiness value to "$swappiness"
     action: command "sysctl" "vm.swappiness=$swappiness"
-    when_integer: "${actual_swappiness.stdout} != $swappiness"
+    when: actual_swappiness.stdout != swappiness
     notify:
       - swapoff
       - swapon
