@@ -1,6 +1,6 @@
 ---
 - name: create timezone file
   template: src=templates/timezone.j2 dest=/etc/timezone
-  when_boolean: $timezone
+  when: timezone is defined
   notify:
     - update timezone
