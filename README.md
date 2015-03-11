@@ -1,6 +1,8 @@
 ansible-playbooks
 =================
 
+WARNING! This repository is deprecated, if you want to see how to create reusable and fancy roles go to [Ansible Galaxy](https://galaxy.ansible.com/list#/roles)
+
 A simple and quick way to deploy development environment.
 
 Tested on:
